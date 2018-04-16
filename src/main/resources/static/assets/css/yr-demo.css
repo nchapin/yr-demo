@@ -1,0 +1,13 @@
+.product-box .product-image {
+width: 130px;
+float: left;
+position: absolute;
+}
+
+.product-box .product-desc {
+padding-left: 130px;
+}
+
+.product-box .product-image img {
+width: 130px;
+}

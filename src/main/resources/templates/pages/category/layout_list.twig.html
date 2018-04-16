@@ -4,17 +4,19 @@
 <div class="container">
     <!-- Example row of columns -->
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <p>Facetts</p>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-10">
             {% for product in searchResult.products %}
             <div class="product-box">
-                <div><img src="{{ product.easyImgYRx260 }}" style="width=130px" alt="{{ product.name }}"/></div>
+                <div class="product-image"><img src="{{ product.easyImgYRx260 }}" alt="{{ product.name }}"/></div>
+                <div class="product-desc">
                 <h3 class="product-name"><a href="{{ product.url }}" >{{ product.name }}</a></h3>
                 <div class="product-gamme"><a href="/c/{{ product.codeProductGamme }}">{{ product.nameProductGamme }}</a></div>
                 <div class="product-summary"><p>{{ product.summary }}</p></div>
                 <div class="product-price"><span class="original-price">{{ product.price.formattedValue }}</span> <span class="discounted-price">{{ product.discountedPrice.formattedValue }}</span></div>
+                </div>
             </div>
             {% endfor %}
         </div>
