@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-2">
+        {% for facet in searchResult.facets %}
+        <div class="facet-{{ facet.code }}">
+            <p class="facet-name">{{ facet.name }}</p>
+            <ul>
+            {% for facet_value in facet.values %}
+                <li class="facet-value">
+                    <a href="{{ facet_value.query.url }}">{{ facet_value.name }} ({{ facet_value.count }})</a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="col-md-10">
+        {% for product in searchResult.products %}
+        <div class="product-box">
+            <div class="product-image"><img src="{{ product.easyImgYRx260 }}" alt="{{ product.name }}"/></div>
+            <div class="product-desc">
+                <h3 class="product-name"><a href="{{ product.url }}" >{{ product.name }}</a></h3>
+                <div class="product-gamme"><a href="/c/{{ product.codeProductGamme }}">{{ product.nameProductGamme }}</a></div>
+                <div class="product-summary"><p>{{ product.summary }}</p></div>
+                {% if product.discountedPrice %}
+                <div class="product-price"><span class="original-price">{{ product.price.formattedValue }}</span> <span class="selling-price">{{ product.discountedPrice.formattedValue }}</span></div>
+                {% else %}
+                <div class="product-price"><span class="selling-price">{{ product.price.formattedValue }}</span></div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

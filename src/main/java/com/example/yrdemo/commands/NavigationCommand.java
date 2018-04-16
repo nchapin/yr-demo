@@ -18,8 +18,13 @@ public class NavigationCommand extends AbstractCommand {
      * @return the result of the computation
      */
     @Override
-    public CommandReturn call() {
+    public CommandReturn doInternalCall() {
         CatalogViewData data = navigationService.getCatalogView();
         return new CommandReturn("catalogView", data);
+    }
+
+    @Override
+    public String getCacheKey() {
+        return "CatalogViewData";
     }
 }

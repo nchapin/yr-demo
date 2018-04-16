@@ -12,4 +12,10 @@ public class SearchService extends APIService {
         ResponseEntity<YRAPISearchResponse> response = callRest(url, YRAPISearchResponse.class);
         return response.getBody().getData();
     }
+
+    public SearchResultData textSearch(String text) {
+        String url = getAPIURL("/YR-FR/products/?query=" + text);
+        ResponseEntity<YRAPISearchResponse> response = callRest(url, YRAPISearchResponse.class);
+        return response.getBody().getData();
+    }
 }

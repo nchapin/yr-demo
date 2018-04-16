@@ -2,7 +2,11 @@ package com.example.yrdemo.commands;
 
 import com.example.yrdemo.api.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+@Component
+@Scope("prototype")
 public class ProductFinderCommand extends AbstractCommand {
     String code;
 
@@ -16,8 +20,13 @@ public class ProductFinderCommand extends AbstractCommand {
      * @throws Exception if unable to compute a result
      */
     @Override
-    public CommandReturn call() throws Exception {
+    public CommandReturn doInternalCall() throws Exception {
         return new CommandReturn("product", productService.getProductByCode(code));
+    }
+
+    @Override
+    public String getCacheKey() {
+        return "ProductData-" + code;
     }
 
     public String getCode() {

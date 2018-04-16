@@ -27,4 +27,12 @@ public class CommandFactory {
         command.setCode(code);
         return command;
     }
+
+    @Bean
+    @Scope("prototype")
+    public TextSearchCommand createTextSearchCommand(String text) {
+        TextSearchCommand command = new TextSearchCommand();
+        command.setText(text);
+        return command;
+    }
 }

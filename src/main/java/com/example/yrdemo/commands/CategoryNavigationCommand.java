@@ -19,8 +19,13 @@ public class CategoryNavigationCommand extends AbstractCommand{
      * @return the result of the computation
      */
     @Override
-    public CommandReturn call() {
+    public CommandReturn doInternalCall() {
         return new CommandReturn("searchResult", searchService.searchByCategoryCode(categoryCode));
+    }
+
+    @Override
+    public String getCacheKey() {
+        return "CategorySearchData-" + categoryCode;
     }
 
     public String getCategoryCode() {

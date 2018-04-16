@@ -11,3 +11,20 @@ padding-left: 130px;
 .product-box .product-image img {
 width: 130px;
 }
+
+.original-price {
+color: #999;
+font-size: 0.8em;
+text-decoration: line-through;
+}
+
+.selling-price {
+color: #b4023f;
+font-size: 1.2em;
+font-weight: bold;
+}
+
+.facet-name {
+font-size: 1.2em;
+font-weight: bold;
+}
