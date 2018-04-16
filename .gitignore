@@ -1,3 +1,7 @@
+.idea
+yr-demo.iml
+/out/
+
 .gradle
 /build/
 
