@@ -19,4 +19,12 @@ public class CommandFactory {
         command.setCategoryCode(categoryCode);
         return command;
     }
+
+    @Bean
+    @Scope("prototype")
+    public ProductFinderCommand createProductFinderCommand(String code) {
+        ProductFinderCommand command = new ProductFinderCommand();
+        command.setCode(code);
+        return command;
+    }
 }
