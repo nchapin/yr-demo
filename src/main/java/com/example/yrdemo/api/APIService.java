@@ -17,6 +17,7 @@ public class APIService {
 
     protected <T> ResponseEntity<T>  callRest(String url, java.lang.Class<T> responseType) {
         RestTemplate restTemplate = new RestTemplate();
+        //restTemplate.setInterceptors(Collections.singletonList(new RequestLoggingInterceptor()));
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON_UTF8));
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);

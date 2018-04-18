@@ -18,7 +18,7 @@ public class NavigationServiceTest {
     CommandFactory commandFactory;
 
     @Test
-    public void testGetNav() {
+    public void testGetNav() throws Exception {
         NavigationCommand command = commandFactory.createNavigationCommand();
         assertNotNull(command);
         assertNotNull(command.call());

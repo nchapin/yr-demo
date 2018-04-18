@@ -1,5 +1,8 @@
 package com.example.yrdemo.api.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class FacetValueData {
     String code;
     String name;

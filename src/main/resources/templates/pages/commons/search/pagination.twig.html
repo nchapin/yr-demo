@@ -1,0 +1,28 @@
+<div class="row search-pagination">
+    <div class="col-md6">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                {% for page in searchResult.pagination.pages %}
+                {% if (page == searchResult.pagination.currentPage) %}
+                <li class="page-item active"><a class="page-link" href="{{searchResult.currentQuery.url}}&page={{ page }}">{{ page + 1 }}</a></li>
+                {% else %}
+                <li class="page-item"><a class="page-link" href="{{searchResult.currentQuery.url}}&page={{ page }}">{{ page + 1 }}</a></li>
+                {% endif %}
+                {% endfor %}
+
+            </ul>
+        </nav>
+    </div>
+    <div class="col-md6">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Trier par...
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {% for sort in searchResult.sorts %}
+                <a class="dropdown-item" href=" {{searchResult.currentQuery.url}}&sort={{ sort.code }} ">{{ sort.code }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

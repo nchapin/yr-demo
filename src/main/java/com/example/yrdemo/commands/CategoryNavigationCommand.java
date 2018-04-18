@@ -1,5 +1,6 @@
 package com.example.yrdemo.commands;
 
+import com.example.yrdemo.api.SearchQuery;
 import com.example.yrdemo.api.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope("prototype")
 public class CategoryNavigationCommand extends AbstractCommand{
-    String categoryCode;
+    SearchQuery query;
 
     @Autowired
     SearchService searchService;
@@ -20,19 +21,27 @@ public class CategoryNavigationCommand extends AbstractCommand{
      */
     @Override
     public CommandReturn doInternalCall() {
-        return new CommandReturn("searchResult", searchService.searchByCategoryCode(categoryCode));
+        return new CommandReturn("searchResult", searchService.searchByCategoryCode(query));
     }
 
     @Override
     public String getCacheKey() {
-        return "CategorySearchData-" + categoryCode;
+        return "CategorySearchData-" + query.toString();
     }
 
-    public String getCategoryCode() {
-        return categoryCode;
+    public SearchQuery getQuery() {
+        return query;
     }
 
-    public void setCategoryCode(String categoryCode) {
-        this.categoryCode = categoryCode;
+    public void setQuery(SearchQuery query) {
+        this.query = query;
+    }
+
+    public SearchService getSearchService() {
+        return searchService;
+    }
+
+    public void setSearchService(SearchService searchService) {
+        this.searchService = searchService;
     }
 }

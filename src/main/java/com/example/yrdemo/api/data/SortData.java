@@ -3,10 +3,9 @@ package com.example.yrdemo.api.data;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CategoryData {
+public class SortData {
     String code;
-    String name;
-    String url;
+    Boolean selected;
 
     public String getCode() {
         return code;
@@ -16,19 +15,11 @@ public class CategoryData {
         this.code = code;
     }
 
-    public String getName() {
-        return name;
+    public Boolean getSelected() {
+        return selected;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
+    public void setSelected(Boolean selected) {
+        this.selected = selected;
     }
 }

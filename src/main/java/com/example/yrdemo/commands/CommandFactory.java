@@ -1,5 +1,6 @@
 package com.example.yrdemo.commands;
 
+import com.example.yrdemo.api.SearchQuery;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -14,9 +15,9 @@ public class CommandFactory {
 
     @Bean
     @Scope("prototype")
-    public CategoryNavigationCommand createCategoryNavigationCommand(String categoryCode) {
+    public CategoryNavigationCommand createCategoryNavigationCommand(SearchQuery query) {
         CategoryNavigationCommand command = new CategoryNavigationCommand();
-        command.setCategoryCode(categoryCode);
+        command.setQuery(query);
         return command;
     }
 
