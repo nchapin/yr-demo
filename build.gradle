@@ -19,6 +19,10 @@ group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
+jar {
+	archiveName 'yr-demo.jar'
+}
+
 repositories {
 	mavenCentral()
 	jcenter()
@@ -36,3 +40,4 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.security:spring-security-test')
 }
+
