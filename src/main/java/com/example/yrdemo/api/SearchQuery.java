@@ -22,7 +22,7 @@ public class SearchQuery {
         sb.append("s:" + sort);
         sb.append("-");
         sb.append("}");
-        return super.toString();
+        return sb.toString();
     }
 
     public String getCategoryCode() {
