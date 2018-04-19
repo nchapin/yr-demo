@@ -25,8 +25,7 @@ public class SearchService extends APIService {
             if (!StringUtils.isEmpty(query.getSort())) {
                 builder.addParameter("sort", query.getSort());
             }
-            String url = null;
-            url = URLDecoder.decode(getAPIURL(builder.toString()), "UTF-8");
+            String url = URLDecoder.decode(getAPIURL(builder.toString()), "UTF-8");
             ResponseEntity<YRAPISearchResponse> response = callRest(url, YRAPISearchResponse.class);
             return response.getBody().getData();
         } catch (UnsupportedEncodingException e) {
@@ -35,9 +34,27 @@ public class SearchService extends APIService {
         return null;
     }
 
-    public SearchResultData textSearch(String text) {
-        String url = getAPIURL("/YR-FR/products/?query=" + text);
-        ResponseEntity<YRAPISearchResponse> response = callRest(url, YRAPISearchResponse.class);
-        return response.getBody().getData();
+    public SearchResultData textSearch(SearchQuery query) {
+        try {
+            URIBuilder builder = new URIBuilder();
+            builder.setPath("/YR-FR/products/");
+            if (StringUtils.isEmpty(query.getFreeText())) {
+                builder.addParameter("query", query.getQuery());
+            } else {
+                builder.addParameter("query", query.getFreeText());
+            }
+            if (query.getPage() != null) {
+                builder.addParameter("currentPage", query.getPage().toString());
+            }
+            if (!StringUtils.isEmpty(query.getSort())) {
+                builder.addParameter("sort", query.getSort());
+            }
+            String url = URLDecoder.decode(getAPIURL(builder.toString()), "UTF-8");
+            ResponseEntity<YRAPISearchResponse> response = callRest(url, YRAPISearchResponse.class);
+            return response.getBody().getData();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

@@ -31,9 +31,9 @@ public class CommandFactory {
 
     @Bean
     @Scope("prototype")
-    public TextSearchCommand createTextSearchCommand(String text) {
+    public TextSearchCommand createTextSearchCommand(SearchQuery query) {
         TextSearchCommand command = new TextSearchCommand();
-        command.setText(text);
+        command.setQuery(query);
         return command;
     }
 }

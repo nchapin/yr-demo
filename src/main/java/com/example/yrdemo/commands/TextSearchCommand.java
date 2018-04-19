@@ -1,5 +1,6 @@
 package com.example.yrdemo.commands;
 
+import com.example.yrdemo.api.SearchQuery;
 import com.example.yrdemo.api.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope("prototype")
 public class TextSearchCommand extends AbstractCommand {
-    String text;
+    SearchQuery query;
 
     @Autowired
     SearchService searchService;
@@ -20,20 +21,20 @@ public class TextSearchCommand extends AbstractCommand {
      */
     @Override
     public CommandReturn doInternalCall() throws Exception {
-        return new CommandReturn("searchResult", searchService.textSearch(text));
+        return new CommandReturn("searchResult", searchService.textSearch(query));
     }
 
     @Override
     public String getCacheKey() {
-        return "SearchData-" + text;
+        return "SearchData-" + query.toString();
     }
 
-    public String getText() {
-        return text;
+    public SearchQuery getQuery() {
+        return query;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setQuery(SearchQuery query) {
+        this.query = query;
     }
 
     public SearchService getSearchService() {

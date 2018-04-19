@@ -24,8 +24,12 @@ public class CategoryController extends AbstractController {
     CommandFactory commandFactory;
 
     @RequestMapping(value = "/{categoryCode:.*}", method = RequestMethod.GET)
-    public String getCategory(@PathVariable("categoryCode") final String categoryCode, @RequestParam(value = "q", required = false) final String searchQuery,
-                              @RequestParam(value = "page", defaultValue = "0") final int page, @RequestParam(value = "sort", required = false) final String sortCode, final Model model, final HttpServletRequest request,
+    public String getCategory(@PathVariable("categoryCode") final String categoryCode,
+                              @RequestParam(value = "q", required = false) final String searchQuery,
+                              @RequestParam(value = "page", defaultValue = "0") final int page,
+                              @RequestParam(value = "sort", required = false) final String sortCode,
+                              final Model model,
+                              final HttpServletRequest request,
                               final HttpServletResponse response) {
         SearchQuery query = new SearchQuery();
         query.setCategoryCode(categoryCode);
