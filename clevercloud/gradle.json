@@ -1,9 +1,0 @@
-{
-    "build": {
-        "type": "gradle",
-        "goal": "build"
-    },
-    "deploy": {
-        "goal": "bootRun"
-    }
-}

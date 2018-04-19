@@ -1,0 +1,9 @@
+{
+  "build": {
+    "type": "qradle",
+    "goal": "build"
+  },
+  "deploy": {
+    "jarName": "build/libs/yr-demo-0.0.1-SNAPSHOT.jar"
+  }
+}
