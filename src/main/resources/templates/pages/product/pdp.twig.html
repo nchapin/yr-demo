@@ -9,10 +9,14 @@
         </div>
         <div class="col-md-8">
             <div class="product-detail">
-                <h3 class="product-name"><a href="{{ product.url }}" >{{ product.name }}</a></h3>
+                <h3 class="product-name">{{ product.name }}</h3>
                 <div class="product-gamme"><a href="/c/{{ product.codeProductGamme }}">{{ product.nameProductGamme }}</a></div>
                 <div class="product-summary"><p>{{ product.summary }}</p></div>
-                <div class="product-price"><span class="original-price">{{ product.price.formattedValue }}</span> <span class="discounted-price">{{ product.discountedPrice.formattedValue }}</span></div>
+                {% if product.discountedPrice %}
+                <div class="product-price"><span class="original-price">{{ product.price.formattedValue }}</span> <span class="selling-price">{{ product.discountedPrice.formattedValue }}</span></div>
+                {% else %}
+                <div class="product-price"><span class="selling-price">{{ product.price.formattedValue }}</span></div>
+                {% endif %}
             </div>
         </div>
     </div>
